@@ -1,6 +1,6 @@
-# Advent of Code 2021
+# Advent of Code 2022
 
-My solutions for Advent of Code 2021. This year I am a bit boring, as I am learning Kotlin and practicing C++ with Abseil.
+My solutions for Advent of Code 2022. This year I am a bit boring, as I am learning Kotlin and practicing C++ with Abseil.
 
 | Day | Kotlin | C++ |
 | --- | ------ | --- |
@@ -40,11 +40,7 @@ My solutions for Advent of Code 2021. This year I am a bit boring, as I am learn
 
 ### Running code
 
-```bash
-kotlin kotlin/day<day_name>.py <filename>
-```
-
-where `<filename>` is usually `simple` or `full`.
+Just open the project in IntelliJ and click play on the Day.kt file :)
 
 ### Testing code
 
@@ -55,4 +51,4 @@ where `<filename>` is usually `simple` or `full`.
 
 - Dart to see what it's like and learn Flutter
 - Go to see what not caring about code style feels like
--
+- PREV for some torture due to lack of standard library

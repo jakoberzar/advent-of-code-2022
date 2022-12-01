@@ -15,6 +15,7 @@ touch "$INPUT_DAY_FOLDER/full.txt"
 echo "Input files created"
 
 # Make Kotlin files
-# cp "$KOTLIN_FOLDER/day-boilerplate.py" "$KOTLIN_FOLDER/day$DAY_NAME.py"
-# touch "$KOTLIN_FOLDER/day$DAY_NAME.kt"
-# echo "Kotlin files created"
+cp "$KOTLIN_FOLDER/Day01.kt" "$KOTLIN_FOLDER/Day$DAY_NAME.py"
+# cp "$KOTLIN_FOLDER/day-boilerplate.kt" "$KOTLIN_FOLDER/Day$DAY_NAME.py"
+# touch "$KOTLIN_FOLDER/Day$DAY_NAME.kt"
+echo "Kotlin files created"
