@@ -1,40 +1,70 @@
+enum class Move(val score: Int) {
+    ROCK(1),
+    PAPER(2),
+    SCISSORS(3),
+}
+
+enum class Result(val score: Int) {
+    LOSS(0),
+    DRAW(3),
+    WIN(6),
+}
+
+val enemyMoveMap = mapOf('A' to Move.ROCK, 'B' to Move.PAPER, 'C' to Move.SCISSORS)
+val playerMoveMap = mapOf('X' to Move.ROCK, 'Y' to Move.PAPER, 'Z' to Move.SCISSORS)
+val resultMap = mapOf('X' to Result.LOSS, 'Y' to Result.DRAW, 'Z' to Result.WIN)
+
+val beatMap = mapOf(Move.ROCK to Move.SCISSORS, Move.PAPER to Move.ROCK, Move.SCISSORS to Move.PAPER)
+val lossMap = beatMap.map { Pair(it.value, it.key) }.toMap()
+
+// TODO: Add unit tests :)
+fun scoreBattle(player: Move, enemy: Move): Result {
+    if (player == enemy) return Result.DRAW
+    if (beatMap[player] == enemy) return Result.WIN
+    return Result.LOSS
+}
+
+// TODO: Add unit tests :)
+fun determineMove(result: Result, enemy: Move): Move {
+    if (result == Result.DRAW) return enemy
+    if (result == Result.LOSS) return beatMap[enemy]!!
+    return lossMap[enemy]!!
+}
+
+fun <T> parseInput(lines: List<String>, playerMap: Map<Char, T>): List<Pair<Move, T>> {
+    return lines.map { line ->
+        val enemy = line[0]
+        check(enemy in listOf<Char>('A', 'B', 'C'))
+        val player = line[2]
+        check(player in listOf<Char>('X', 'Y', 'Z'))
+
+        Pair(enemyMoveMap[enemy]!!, playerMap[player]!!)
+    }
+}
+
 fun main() {
-    fun calculateLineScore(line: String): Int {
-        val enemy = line[0]
-        val me = line[2]
-
-        val shapeScores = mapOf<Char, Int>('X' to 1, 'Y' to 2, 'Z' to 3)
-        val shapeScore = shapeScores[me]!!.toInt()
-
-        val beatScores = mapOf<Char, Map<Char, Int>>('X' to mapOf<Char, Int>('A' to 3, 'B' to 0, 'C' to 6),
-            'Y' to mapOf<Char, Int>('A' to 6, 'B' to 3, 'C' to 0),
-            'Z' to mapOf<Char, Int>('A' to 0, 'B' to 6, 'C' to 3))
-        val beatScore = beatScores[me]!![enemy]!!.toInt()
-
-        return shapeScore + beatScore
-    }
-
-    fun calculateLineScorePart2(line: String): Int {
-        val enemy = line[0]
-        val result = line[2]
-
-        val shapeScores = mapOf<Char, Map<Char, Int>>('X' to mapOf<Char, Int>('A' to 3, 'B' to 1, 'C' to 2),
-            'Y' to mapOf<Char, Int>('A' to 1, 'B' to 2, 'C' to 3),
-            'Z' to mapOf<Char, Int>('A' to 2, 'B' to 3, 'C' to 1))
-        val shapeScore = shapeScores[result]!![enemy]!!.toInt()
-
-        val beatScores = mapOf<Char, Int>('X' to 0, 'Y' to 3, 'Z' to 6)
-        val beatScore = beatScores[result]!!.toInt()
-
-        return beatScore + shapeScore
-    }
-
     fun part1(input: List<String>): Int {
-        return input.sumOf { calculateLineScore(it) }
+        fun scoreRound(moves: Pair<Move, Move>): Int {
+            val (enemy, player) = moves
+            val moveScore = player.score
+            val battleScore = scoreBattle(player, enemy).score
+            return moveScore + battleScore
+        }
+
+        return parseInput(input, playerMoveMap)
+            .sumOf { scoreRound(it) }
     }
 
     fun part2(input: List<String>): Int {
-        return input.sumOf { calculateLineScorePart2(it) }
+        fun scoreRound(moves: Pair<Move, Result>): Int {
+            val (enemy, result) = moves
+            val moveScore = determineMove(result, enemy).score
+            val battleScore = result.score
+            return moveScore + battleScore
+        }
+
+        return parseInput(input, resultMap)
+            .sumOf { scoreRound(it) }
     }
 
     // test if implementation meets criteria from the description, like:
