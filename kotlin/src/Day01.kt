@@ -10,6 +10,7 @@ fun main() {
         }
         return calories
     }
+
     fun part1(input: List<String>): Int {
         return calculateCalories(input).max()
     }
