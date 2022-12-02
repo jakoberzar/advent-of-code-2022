@@ -6,7 +6,7 @@ IFS=$'\n\t'
 # Variables
 DAY_NAME=$1
 INPUT_DAY_FOLDER="inputs/day-$DAY_NAME"
-KOTLIN_FOLDER="kotlin"
+KOTLIN_FOLDER="kotlin/src"
 
 # Make input files
 mkdir "$INPUT_DAY_FOLDER"
