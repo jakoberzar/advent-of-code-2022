@@ -5,7 +5,7 @@ My solutions for Advent of Code 2022. This year I am a bit boring, as I am learn
 | Day | Kotlin | C++ | SIC/XE |
 | --- | ------ | --- | ------ |
 | 1   | ✔️     |     |        |
-| 2   | ✔️     |     |        |
+| 2   | ✔️     |     | WIP    |
 | 3   | ✔️     |     |        |
 | 4   | ✔️     |     |        |
 | 5   | ✔️     |     |        |
@@ -45,6 +45,19 @@ Just open the project in IntelliJ and click play on the Day.kt file :)
 ### Testing code
 
 ...TODO? :)
+
+## SicTools
+
+### Setup
+
+1. Download SicTools 2.1.0 from https://github.com/jurem/SicTools
+2. Move sictools.jar to the `sic` directory in this repository.
+
+### Running code
+
+```
+java -jar sic/sictools.jar sic/day-02.sic.asm < inputs/day-02/full.txt
+```
 
 ## Other language candidates
 
