@@ -1,4 +1,4 @@
-data class Instruction(val count: Int, val from: Int, val to: Int) {}
+data class Instruction(val count: Int, val from: Int, val to: Int)
 typealias Crates = MutableList<MutableList<Char>>
 
 fun parseInput(input: String): Pair<Crates, List<Instruction>> {
@@ -23,12 +23,10 @@ fun parseInput(input: String): Pair<Crates, List<Instruction>> {
     })
 
     val instructions = inputParts[1].lines().map { line ->
-        var split = line.substring(5).split(" from ")
-        val count = split[0].toInt()
-
-        split = split[1].split(" to ")
-        val from = split[0].toInt()
-        val to = split[1].toInt()
+        val matches = Regex("move (\\d+) from (\\d+) to (\\d+)").matchEntire(line)!!.groupValues.drop(1)
+        val count = matches[0].toInt()
+        val from = matches[1].toInt()
+        val to = matches[2].toInt()
 
         Instruction(count, from, to)
     }
