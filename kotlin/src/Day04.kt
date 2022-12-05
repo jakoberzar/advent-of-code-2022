@@ -31,11 +31,11 @@ fun main() {
     }
 
     // test if implementation meets criteria from the description, like:
-    val testInput = readInput("day-04", "simple")
+    val testInput = readLines("day-04", "simple")
     check(part1(testInput) == 2)
     check(part2(testInput) == 4)
 
-    val input = readInput("day-04", "full")
+    val input = readLines("day-04", "full")
     check(part1(input) == 464)
     check(part2(input) == 770)
     println(part1(input))
