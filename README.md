@@ -9,7 +9,7 @@ My solutions for Advent of Code 2022. This year I am a bit boring, as I am learn
 | 3   | ✔️     |     |        |
 | 4   | ✔️     |     |        |
 | 5   | ✔️     |     |        |
-| 6   |        |     |        |
+| 6   | ✔️     |     |        |
 | 7   |        |     |        |
 | 8   |        |     |        |
 | 9   |        |     |        |
