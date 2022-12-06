@@ -5,7 +5,7 @@ My solutions for Advent of Code 2022. This year I am a bit boring, as I am learn
 | Day | Kotlin | C++ | SIC/XE |
 | --- | ------ | --- | ------ |
 | 1   | ✔️     |     |        |
-| 2   | ✔️     |     | WIP    |
+| 2   | ✔️     |     | ✔️     |
 | 3   | ✔️     |     |        |
 | 4   | ✔️     |     |        |
 | 5   | ✔️     |     |        |
@@ -56,7 +56,7 @@ Just open the project in IntelliJ and click play on the Day.kt file :)
 ### Running code
 
 ```
-java -jar sic/sictools.jar sic/day-02.sic.asm < inputs/day-02/full.txt
+java -jar sic/sictools.jar -freq 100000 sic/day-02.sic.asm < inputs/day-02/full.txt
 ```
 
 ## Other language candidates
