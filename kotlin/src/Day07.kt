@@ -1,0 +1,103 @@
+abstract class Node(val name: String, val parent: Directory?) {
+    abstract fun size(): Int
+}
+
+class File(name: String, private val size: Int, parent: Directory) : Node(name, parent) {
+    override fun size(): Int = size
+}
+
+class Directory(name: String, parent: Directory?) : Node(name, parent) {
+    private val children = mutableListOf<Node>()
+    private var cachedSize: Int? = null
+
+    fun addChild(node: Node) {
+        cachedSize = null
+        children.add(node)
+    }
+
+    fun childrenDirs(): List<Directory> = children.filterIsInstance<Directory>()
+
+    override fun size(): Int {
+        if (cachedSize == null) {
+            cachedSize = children.sumOf { it.size() }
+        }
+        return cachedSize!!
+    }
+
+    fun eligibleSizeSum(): Int {
+        val myEligibleSize = if (size() < 100000) size() else 0
+        val childrenEligibleSizes = childrenDirs().map { it.eligibleSizeSum() } // Already count themselves in the sum!
+        return myEligibleSize + childrenEligibleSizes.sum()
+    }
+
+    fun getRecursiveDirs(found: MutableList<Directory>): MutableList<Directory> {
+        childrenDirs().forEach { it.getRecursiveDirs(found) }
+        found.add(this)
+        return found
+    }
+}
+
+fun parseNode(line: String, parent: Directory): Node {
+    return if (line.startsWith("dir ")) {
+        Directory(line.removePrefix("dir "), parent)
+    } else {
+        val split = line.split(' ')
+        File(split[1], split[0].toInt(), parent)
+    }
+}
+
+fun parseInput(input: List<String>): Directory {
+    val root = Directory("/", null)
+    var currentDir = root
+    var idx = 1
+    while (idx <= input.lastIndex) {
+        check(input[idx].startsWith("$ "))
+        val command = input[idx].removePrefix("$ ")
+        when (command.substring(0, 2)) {
+            "cd" -> {
+                val arg = command.substring(3)
+                currentDir = when (arg) {
+                    "/" -> root
+                    ".." -> currentDir.parent!!
+                    else -> currentDir.childrenDirs().find { it.name == arg }!!
+                }
+            }
+            "ls" -> {
+                var readIdx = idx + 1
+                while (readIdx <= input.lastIndex && !input[readIdx].startsWith("$")) {
+                    val node = parseNode(input[readIdx], currentDir)
+                    currentDir.addChild(node)
+                    readIdx += 1
+                }
+                idx = readIdx - 1
+            }
+        }
+        idx += 1
+    }
+    return root
+}
+
+fun main() {
+    fun part1(input: List<String>): Int {
+        val root = parseInput(input)
+        return root.eligibleSizeSum()
+    }
+
+    fun part2(input: List<String>): Int {
+        val maxRootSize = 70000000 - 30000000
+        val root = parseInput(input)
+        val minSize = root.size() - maxRootSize
+        return root.getRecursiveDirs(mutableListOf()).map { it.size() }.filter { it >= minSize }.minOf { it }
+    }
+
+    // test if implementation meets criteria from the description, like:
+    val testInput = readLines("day-07", "simple")
+    check(part1(testInput) == 95437)
+    check(part2(testInput) == 24933642)
+
+    val input = readLines("day-07", "full")
+    check(part1(input) == 1749646)
+    check(part2(input) == 1498966)
+    println(part1(input))
+    println(part2(input))
+}
