@@ -46,12 +46,12 @@ Just open the project in IntelliJ and click play on the Day.kt file :)
 
 ...TODO? :)
 
-## SicTools
+## SIC/XE
 
 ### Setup
 
-1. Download SicTools 2.1.0 from https://github.com/jurem/SicTools
-2. Move sictools.jar to the `sic` directory in this repository.
+1. Download `sictools.jar` from https://github.com/jurem/SicTools
+2. Move `sictools.jar` to the `sic` directory in this repository.
 
 ### Running code
 
