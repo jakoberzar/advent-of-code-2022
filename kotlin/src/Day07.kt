@@ -23,18 +23,12 @@ class Directory(name: String, parent: Directory?) : Node(name, parent) {
         }
         return cachedSize!!
     }
+}
 
-    fun eligibleSizeSum(): Int {
-        val myEligibleSize = if (size() < 100000) size() else 0
-        val childrenEligibleSizes = childrenDirs().map { it.eligibleSizeSum() } // Already count themselves in the sum!
-        return myEligibleSize + childrenEligibleSizes.sum()
-    }
-
-    fun getRecursiveDirs(found: MutableList<Directory>): MutableList<Directory> {
-        childrenDirs().forEach { it.getRecursiveDirs(found) }
-        found.add(this)
-        return found
-    }
+fun getListRecursiveDirs(parent: Directory, found: MutableList<Directory>): MutableList<Directory> {
+    parent.childrenDirs().forEach { getListRecursiveDirs(it, found) }
+    found.add(parent)
+    return found
 }
 
 fun parseNode(line: String, parent: Directory): Node {
@@ -80,14 +74,16 @@ fun parseInput(input: List<String>): Directory {
 fun main() {
     fun part1(input: List<String>): Int {
         val root = parseInput(input)
-        return root.eligibleSizeSum()
+        val dirList = getListRecursiveDirs(root, mutableListOf())
+        return dirList.map { it.size() }.filter { it <= 100000 }.sum()
     }
 
     fun part2(input: List<String>): Int {
-        val maxRootSize = 70000000 - 30000000
         val root = parseInput(input)
-        val minSize = root.size() - maxRootSize
-        return root.getRecursiveDirs(mutableListOf()).map { it.size() }.filter { it >= minSize }.minOf { it }
+        val maxRootSize = 70000000 - 30000000
+        val minDeleteSize = root.size() - maxRootSize
+        val dirList = getListRecursiveDirs(root, mutableListOf())
+        return dirList.map { it.size() }.filter { it >= minDeleteSize }.minOf { it }
     }
 
     // test if implementation meets criteria from the description, like:
