@@ -2,33 +2,33 @@
 
 My solutions for Advent of Code 2022. This year I am a bit boring, as I am learning Kotlin. I would also like to practice C++ with Abseil and try some SIC/XE assembly if time permits :)
 
-| Day | Kotlin | C++ | SIC/XE    |
-| --- | ------ | --- | --------- |
-| 1   | ✔️     |     |           |
-| 2   | ✔️     |     | ✔️        |
-| 3   | ✔️     |     |           |
-| 4   | ✔️     |     | Candidate |
-| 5   | ✔️     |     |           |
-| 6   | ✔️     |     | Candidate |
-| 7   | ✔️     |     |           |
-| 8   |        |     |           |
-| 9   |        |     |           |
-| 10  |        |     |           |
-| 11  |        |     |           |
-| 12  |        |     |           |
-| 13  |        |     |           |
-| 14  |        |     |           |
-| 15  |        |     |           |
-| 16  |        |     |           |
-| 17  |        |     |           |
-| 18  |        |     |           |
-| 19  |        |     |           |
-| 20  |        |     |           |
-| 21  |        |     |           |
-| 22  |        |     |           |
-| 23  |        |     |           |
-| 24  |        |     |           |
-| 25  |        |     |           |
+| Day | Nickname               | Kotlin | C++ | SIC/XE                                          |
+| --- | ---------------------- | ------ | --- | ----------------------------------------------- |
+| 1   | Group by calories      | ✔️     |     |                                                 |
+| 2   | Rock Paper Scissors    | ✔️     |     | ✔️                                              |
+| 3   | Find common characters | ✔️     |     |                                                 |
+| 4   | Overlapping intervals  | ✔️     |     | Candidate                                       |
+| 5   | CrateMover 9000        | ✔️     |     | Candidate pre-parsed, text screen visualization |
+| 6   | Find unique substring  | ✔️     |     | Candidate                                       |
+| 7   | Bash (ls, cd)          | ✔️     |     |                                                 |
+| 8   | Tree heights           |        |     |                                                 |
+| 9   | Rope simulation        | ✔️     |     | Candidate, text screen visualization            |
+| 10  |                        |        |     |                                                 |
+| 11  |                        |        |     |                                                 |
+| 12  |                        |        |     |                                                 |
+| 13  |                        |        |     |                                                 |
+| 14  |                        |        |     |                                                 |
+| 15  |                        |        |     |                                                 |
+| 16  |                        |        |     |                                                 |
+| 17  |                        |        |     |                                                 |
+| 18  |                        |        |     |                                                 |
+| 19  |                        |        |     |                                                 |
+| 20  |                        |        |     |                                                 |
+| 21  |                        |        |     |                                                 |
+| 22  |                        |        |     |                                                 |
+| 23  |                        |        |     |                                                 |
+| 24  |                        |        |     |                                                 |
+| 25  |                        |        |     |                                                 |
 
 ## Script for starting a new day
 
