@@ -17,3 +17,11 @@ fun readInput(day: String, name: String) = File("./../inputs/$day", "$name.txt")
 fun String.md5() = BigInteger(1, MessageDigest.getInstance("MD5").digest(toByteArray()))
     .toString(16)
     .padStart(32, '0')
+
+
+/**
+ * The 4 different moving directions
+ */
+enum class Direction {
+    Left, Right, Down, Up,
+}
