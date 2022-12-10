@@ -56,7 +56,10 @@ Just open the project in IntelliJ and click play on the Day.kt file :)
 ### Running code
 
 ```
+# Day 2
 java -jar sic/sictools.jar -freq 100000 sic/day-02.sic.asm < inputs/day-02/full.txt
+# Day 10
+java -jar sic/sictools.jar -text 40x6 -freq 2000 sic/day-10.sic.asm < inputs/day-10/full.txt
 ```
 
 ## Other language candidates
