@@ -13,7 +13,7 @@ My solutions for Advent of Code 2022. This year I am a bit boring, as I am learn
 | 7   | Bash (ls, cd)          | ✔️     |     |                                                 |
 | 8   | Tree heights           | ✔️     |     |                                                 |
 | 9   | Rope simulation        | ✔️     |     | Candidate, text screen visualization            |
-| 10  |                        |        |     |                                                 |
+| 10  | CRT Instructions       | ✔️     |     | Candidate, text screen visualization            |
 | 11  |                        |        |     |                                                 |
 | 12  |                        |        |     |                                                 |
 | 13  |                        |        |     |                                                 |
